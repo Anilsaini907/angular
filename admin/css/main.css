@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+#image-list {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+#image-list li {
+  background: #fff;
+  border: 1px solid #ccc;
+  text-align:center;
+  padding:20px;
+  margin-bottom:19px;
+}
+#image-list li img {
+  width: 258px;
+  vertical-align: middle;
+  border:1px solid #474747;
+}
+
+/*! ============================================================
+ * Feeds
+ * ============================================================ */
+.feeds .users-feeds .feed {
+  margin-top: 0;
+  margin-bottom: 5px;
+  line-height: 16px;
+}
+.feeds .users-feeds .feed-heading {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.feeds .users-feeds .feed-heading h1,
+.feeds .users-feeds .feed-heading h2,
+.feeds .users-feeds .feed-heading h3,
+.feeds .users-feeds .feed-heading h4,
+.feeds .users-feeds .feed-heading h5,
+.feeds .users-feeds .feed-heading h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.feeds .users-feeds .feed-object {
+  display: block;
+  float: left;
+  margin-top: 2px;
+  margin-right: 8px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.feeds .users-feeds .feed-body {
+  overflow: hidden;
+  zoom: 1;
+}
+.feeds .users-feeds .feed-body span {
+  display: block;
+}
+.feeds .users-feeds .feed-body span + span {
+  display: inline-block;
+}
+.feeds .system-feeds ul li.feed {
+  background-color: #DFF9FF;
+  margin-bottom: 5px;
+  padding: 3px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+.feeds .system-feeds ul li.feed a {
+  text-decoration: none;
+}
+.feeds .system-feeds ul li.feed .label {
+  padding: 5px;
+  margin-right: 3px;
+}
+.feeds .system-feeds ul li.feed .feed-time {
+  margin-top: -17px;
+  float: right;
+  color: #999999;
+}
+@media (max-width: 480px) {
+  .feeds .users-feeds .media .pull-left {
+    float: left;
+  }
+  .feeds .users-feeds .media .media-body small {
+    display: block;
+  }
+  .feeds .system-feeds ul li .message {
+    width: 60%;
+  }
+}

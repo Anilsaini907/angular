@@ -1,0 +1,21 @@
+table{
+	margin:5px;
+	background:none;
+	border-collapse: collapse;
+	table-layout:automatic;
+	width:100%;
+	font-size:12px;
+}
+td {
+border: none!important;
+border-bottom: 1px solid black !important;
+}
+
+th {
+border: none!important;
+border-bottom: 1px solid black !important;
+border-top: 1px solid black !important;
+}
+thead{
+background:#f7f6f0;
+}
