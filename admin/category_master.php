@@ -39,13 +39,13 @@ if(@$_REQUEST['hdnCmd']=="ADD")
 <div class="col-md-3">
 </div>
 <div class="col-md-3">
-<a href="category_master.php" class="btn btn-default btn-sm push_button"><img src='../images/printer.png' height=40><br/>Category</a>
+<a href="category_master.php" class="btn btn-default btn-sm push_button"><img src="http://www.sujaltechnologies.com/wp-content/uploads/2016/10/Admin.png" height=40 width=70><br/>Category</a>
 </div>
 <div class="col-md-3">
-<a href="category_master_photo.php" class="btn btn-default btn-sm push_button"><img src='../images/printer.png' height=40><br/>Category Photos</a>
+<a href="category_master_photo.php" class="btn btn-default btn-sm push_button"><img src="https://cdn0.iconfinder.com/data/icons/large-glossy-icons/512/User_login.png" height=40><br/>Category Photos</a>
 </div>
 <div class="col-md-3">
-<a href="logout.php" class="btn btn-default btn-sm push_button"><img src='../images/printer.png' height=40><br/>logout</a>
+<a href="logout.php" class="btn btn-default btn-sm push_button"><img src="https://tse3.mm.bing.net/th?id=OIP.mPThmIB8bRTBxVBQkaNrqgHaGv&amp;pid=Api&amp;P=0&amp;w=180&amp;h=165" i height=40 width=70><br/>logout</a>
 </div>
 </div>
 <h3>Category Master</h3>
