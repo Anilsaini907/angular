@@ -1,4 +1,19 @@
+<?php
+include_once('admin/config.php'); 
+$catsql="SELECT * FROM tb_category where is_active  =1";
+$allcats=array();
+$categories=array();
+ if (!empty($mysqliconn)) {
+     $categories=mysqli_query($mysqliconn,$catsql);
+     while($rows=mysqli_fetch_array($categories)){
+     //var_dump($rows);
+     array_push($allcats,$rows);
 
+     }
+ }
+ //var_dump($allcats);
+//ini_set('display_errors', 1);
+?>
 <?php
 
 ?>
@@ -24,6 +39,9 @@
         <meta name="robots" content="noindex, follow" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
 
@@ -131,13 +149,16 @@
                                     <a href="#" class="mega-menu-title"><span class="menu-text">CATEGORIES</span></a>
                                     <ul>
                                         <?php
-                                        while($rows=mysqli_fetch_array($categories)){
+                                        foreach ($allcats as $value) {
+                                           
+                                        if($value['parent_id']==0){
                                             ?>
 
-                                            <li>    <a href="category.php?id=<?php echo $rows['id']; ?>"><span class="menu-text"><?php echo $rows['category_name']; ?></span></a></li>
+                                            <li id="liBtn">    <a  href="subCategories.php?id=<?php echo $value['id']; ?>"><span class="menu-text"><?php echo $value['category_name']; ?></span></a></li>
 
+                                        <?php } 
+                                       ?> 
                                         <?php } ?>
-
                                     </ul>
                                 </li>
 
@@ -280,15 +301,11 @@
                                         <a href="#" class="mega-menu-title"><span class="menu-text">SHOP PAGES</span></a>
                                         <ul>
                                             <?php
-                                            $catsql="SELECT * FROM tb_category where is_active  =1";
-
-                                            if (!empty($mysqliconn)) {
-                                                $categories=mysqli_query($mysqliconn,$catsql);
-                                            }
+                                           
                                             while($rows=mysqli_fetch_array($categories)){
                                                 ?>
 
-                                                <li>    <a href="category.php?id=<?php echo $rows['id']; ?>"><span class="menu-text"><?php echo $rows['category_name']; ?></span></a></li>
+                                                <li>    <a href="category.php?id=<?php echo $allcats['id']; ?>"><span class="menu-text"><?php echo $allcats['category_name']; ?></span></a></li>
 
                                             <?php } ?>
 
@@ -426,13 +443,10 @@
                             <select class="search-select select2-basic">
                                 <option value="0">All Categories</option>
                                 <?php
-                                $catsql="SELECT * FROM tb_category where is_active  =1";
-
-                                $categories=mysqli_query($mysqliconn,$catsql);
                                 while($rows=mysqli_fetch_array($categories)){
                                     ?>
 
-                                    <option value="<?php echo $rows['category_name']; ?>" href="category.php?id=<?php echo $rows['id']; ?>"><?php echo $rows['category_name']; ?></option>
+                                    <option value="<?php echo $allcats['category_name']; ?>" href="category.php?id=<?php echo $rows['id']; ?>"><?php echo $allcats['category_name']; ?></option>
 
                                 <?php } ?>
 
@@ -591,5 +605,8 @@
     <!-- OffCanvas Search End -->
 
     <div class="offcanvas-overlay"></div>
+<script>
+//document.getElementById("#liBtn").addEventListener("click", getMySubCats);
 
+</script>
 
