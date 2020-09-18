@@ -49,6 +49,7 @@ $id = $_GET['id'];
  .slick-slide{
 height:300px;
     }
+    h2 { text-align: center }
 </style>
 <body>
 
@@ -56,7 +57,7 @@ height:300px;
 
 var categories = JSON.parse('<?= json_encode($allcats); ?>');
 var parentCatId = JSON.parse('<?= json_encode($id); ?>');
-    //console.log(categories)
+//console.log(categories)
    //console.log(parentCatId)
    $(document).ready(function () {
     getMySubCats(parentCatId);
@@ -78,60 +79,81 @@ var parentCatId = JSON.parse('<?= json_encode($id); ?>');
        // mycats=mycats.concat(subcat(categories,catid))
         getSubcats(mySubcats,categories[i])
         //getProducts(mycats,categories[i])
-        //console.log(mycats)
+        //console.log(mySubcats)
         }
         } 
         //console.log(mycats)
     }
     
-    function subcat(categories,catid){
+   function subSubcat(categories,Subcatid){
+    console.log(Subcatid)
     var subcatarray =[];
     for(var i = 0; i < categories.length; i++)
      {
-        if(categories[i].parent_id === catid)
+        if(categories[i].parent_id === Subcatid)
         {
             var subcatid=categories[i].id;
             subcatarray.push(subcatid)
-          subcatarray = subcatarray.concat(subcat(categories,subcatid));
+           subcatarray = subcatarray.concat(subcat(categories,subcatid));
             //console.log(subcatarray);
         }
-
      }
      return subcatarray;
-        }
+    }
 
-        function getSubcats( mySubcats,category)
+        
+        
+    function getSubcats( mySubcats,category)
     {
-
     $.post("api/getSubcat.php",
     {
         "ids":mySubcats
     },
     function(data,status){
-           console.log(data)
-           if(data.length>10) 
-        
-           {$("#productrows").append('<div id="pro'+mySubcats[0] +'" class="products row row-cols-xl-5 row-cols-lg-2 row-cols-md-4 row-cols-sm-2 row-cols-1"></div>')
-            $("#pro"+mySubcats[0]).append('<h2 class="title"><a href="product-details.html">'+category.category_name+'</a></h2>')
+           //console.log("Hi" +data)
+           
+            $("#productrows").append('<div id="pro'+mySubcats[0] +'" class="products row row-cols-xl-5 row-cols-lg-2 row-cols-md-4 row-cols-sm-2 row-cols-1"></div>')
+            $("#pro"+mySubcats[0]).append(`
+                    <div class="col-lg-3"class="category-banner1">
+                    <h2 onclick="subSubcat(`+ category.id+`)" class="title"><a href="subCategories.php?id=`+ category.id+`">`+ category.category_name+`</a></h2>
+                        <div class="inner">
+                            <a href="subCategories.php?id=`+ category.id+`" class="image" tabindex="0"><img onclick="subSubcat(`+ category.id+`)" src="https://c.shld.net/rpx/i/s/i/spin/0/prod_1683617812??hei=64&amp;wid=64&amp;qlt=50" id="img" style="width: 300px; height:230px;"></a>
+                            <div class="content">
+                                <h3 class="title">
+                                   
+                                </h3>
+                            </div>
+                        </div> 
+                        </div>`);
           
             // for loop for data
-            var json=JSON.parse(data)
-            console.log(json)
-            for(i=0;i<json.length;i++)
-            {
-                var myproduct=json[i]
+           // var json=JSON.parse(data)
+            //console.log(json)
+         //   for(i=0;i<json.length;i++) {
+            //    var myproduct=json[i]
                 //console.log(myproduct.photo_name)
-            $("#pro"+mySubcats[0]).append(
-                `<div class="col">
-        </div>`
-                );
-           }    
-        }
-        })
+         /*   $("#pro"+mySubcats[0]).append(
+                `<div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 452px;"><div><div class="col" style="width: 100%; display: inline-block;">
+                    <div class="category-banner1">
+                        <div class="inner">
+                            <a href="shop.html" class="image" tabindex="0"><img src="`+ category.description+`" alt=""></a>
+                            <div class="content">
+                                <h3 class="title">
+                                    <a href="shop.html" tabindex="0">Roufs</a>
+                                    <span class="number">4</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+                );*/
+          // }    
+        
+        });
             
- 
+
 }
-    function getProducts(mySubcats,category)
+/* function getProducts(mySubcats,category)
     {
 
     $.post("api/getProduct.php",
@@ -161,7 +183,7 @@ var parentCatId = JSON.parse('<?= json_encode($id); ?>');
         })
             
  
-}
+}*/
 </script>
 
   <!-- Page Title/Header Start -->
@@ -184,159 +206,19 @@ var parentCatId = JSON.parse('<?= json_encode($id); ?>');
         </div>
     </div>
     <!-- Page Title/Header End -->
-    <!-- Category Banner Section Start -->
-    <div class="section section-fluid section-padding pt-4">
-        <div class="container">
-            <div class="category-banner1-carousel slick-initialized slick-slider">
-                <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 5876px; transform: translate3d(-2260px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-3.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Towels &amp; Babies</a>
-                                    <span class="number">6</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-4.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Kitchen</a>
-                                    <span class="number">15</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-5.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Kniting &amp; Sewing</a>
-                                    <span class="number">4</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-1.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Gift ideas</a>
-                                    <span class="number">16</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-2.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Home Decor</a>
-                                    <span class="number">16</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="2" aria-hidden="false" style="width: 452px;"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="0"><img src="assets/images/banner/category/banner-s1-3.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="0">Towels</a>
-                                    <span class="number">6</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 452px;"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="0"><img src="assets/images/banner/category/banner-s1-4.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="0">Bedsheets</a>
-                                    <span class="number">15</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 452px;"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="0"><img src="assets/images/banner/category/banner-s1-5.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="0">Roufs</a>
-                                    <span class="number">4</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="5" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                   
-                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="6" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    
-                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="7" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-3.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Kids &amp; Babies</a>
-                                    <span class="number">6</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="8" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-4.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Kitchen</a>
-                                    <span class="number">15</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="9" aria-hidden="true" style="width: 452px;" tabindex="-1"><div><div class="col" style="width: 100%; display: inline-block;">
-                    <div class="category-banner1">
-                        <div class="inner">
-                            <a href="shop.html" class="image" tabindex="-1"><img src="assets/images/banner/category/banner-s1-5.jpg" alt=""></a>
-                            <div class="content">
-                                <h3 class="title">
-                                    <a href="shop.html" tabindex="-1">Kniting &amp; Sewing</a>
-                                    <span class="number">4</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div></div></div>
-                
-</div>
-        </div>
+
+    <div  class="section section-fluid section-padding pt-5">
+    <div id="productrows" class="container">
+
     </div>
-    <!-- Category Banner Section End -->
+    </div>
 
     <!-- Product Section Start -->
-    <div class="section section-fluid section-padding pt-0">
+    <div class="section section-fluid section-padding pt-5">
         <div class="container">
 
             <!-- Section Title Start -->
-            <div class="section-title text-center">
+            <div class="section-title text-center pt-5">
                 <h3 class="sub-title">Shop now</h3>
                 <h2 class="title title-icon-both">Shop our best-sellers</h2>
             </div>

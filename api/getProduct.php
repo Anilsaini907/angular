@@ -28,8 +28,8 @@ while($row=mysqli_fetch_array($catresult)){
 }
 $alldata = json_encode($products);}
 //echo "hello guys";
-//var_dump($alldata);
-echo $alldata;
+var_dump($alldata);
+//echo $alldata;
 
 ?>
 

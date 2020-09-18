@@ -4,7 +4,7 @@
 <?php
 include_once('admin/config.php'); 
  $catsql="SELECT * FROM tb_category where is_active  =1";
-$allcats=array();
+$allproducts=array();
 $categories=array();
  if (!empty($mysqliconn)) {
      $categories=mysqli_query($mysqliconn,$catsql);
@@ -14,7 +14,8 @@ $categories=array();
 
      }
  }
- var_dump($allcats);
+ 
+ $allcats=json_encode($allproducts);
 //ini_set('display_errors', 1);
 
 include('header.php');

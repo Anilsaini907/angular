@@ -22,7 +22,8 @@ while($row=mysqli_fetch_array($catresult)){
     //var_dump($row);
     array_push($products,$row);
 }
-$alldata = json_encode($products);}
+$alldata = json_encode($products);
+}
 //echo "hello guys";
 var_dump($alldata);
 //echo $alldata;
