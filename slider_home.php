@@ -1,9 +1,14 @@
+<style>
+.sale-banner2 .inner .image {
+    height:420px;
+}
+</style>
 <?php
 ?>
 <!-- Slider main container Start -->
 <div class="home1-slider swiper-container">
     <div class="swiper-wrapper">
-        <div class="home1-slide-item swiper-slide" data-swiper-autoplay="5000" data-bg-image="assets/images/slider/home1/slide-1.jpg">
+        <div class="home1-slide-item swiper-slide" data-swiper-autoplay="5000" data-bg-image="https://ak1.ostkcdn.com/images/products/25767983/King-Size-Soft-Plush-Heavy-Thick-Fleece-Blanket-For-Winter-2-Ply-Printed-Bed-Mink-Blanket-85-x-93-10lb-9f9d5122-a5a1-4b66-8faf-50fe1a0da3cd_600.jpg">
             <div class="home1-slide1-content">
                 <span class="bg"></span>
                 <span class="slide-border"></span>
@@ -13,9 +18,9 @@
                 <div class="link"><a href="shop.html">shop now</a></div>
             </div>
         </div>
-        <div class="home1-slide-item swiper-slide" data-swiper-autoplay="5000" data-bg-image="assets/images/slider/home1/slide-2.jpg">
+        <div class="home1-slide-item swiper-slide" data-swiper-autoplay="5000" data-bg-image="https://b3h2.scene7.com/is/image/BedBathandBeyond/22310015251551m">
             <div class="home1-slide2-content">
-                <span class="bg" data-bg-image="assets/images/slider/home1/slide-2-1.png"></span>
+                <span class="bg" data-bg-image="assets/images/slider/home1/slide-2-2.png"></span>
                 <span class="slide-border"></span>
                 <span class="icon">
                         <img src="assets/images/slider/home1/slide-2-2.png" alt="Slide Icon">
@@ -26,7 +31,7 @@
                 <div class="link"><a href="shop.html">shop now</a></div>
             </div>
         </div>
-        <div class="home1-slide-item swiper-slide" data-swiper-autoplay="5000" data-bg-image="assets/images/slider/home1/slide-3.jpg">
+        <div class="home1-slide-item swiper-slide" data-swiper-autoplay="5000" data-bg-image="https://ae01.alicdn.com/kf/HTB1lOUNRFXXXXcfXXXXq6xXFXXX8/Luxury-Quality-Flannel-Blanket-Coral-Fleece-Bedspread-Solid-Orange-Color-Adult-Multi-Size-Bed-Sheets.jpg">
             <div class="home1-slide3-content">
                 <h2 class="title">Affectious gifts</h2>
                 <h3 class="sub-title">
@@ -73,7 +78,7 @@
             <div class="col-lg-6 col-md-6 col-12 learts-mb-40">
                 <div class="sale-banner2">
                     <div class="inner">
-                        <div class="image"><img src="assets/images/banner/sale/sale-banner2-1.jpg" alt=""></div>
+                        <div class="image"><img src="https://tse4.mm.bing.net/th?id=OIP.Iy9tidupPiz7iHeO6ngyTwHaHa&pid=Api&P=0" alt=""></div>
                         <div class="content row justify-content-between mb-n3">
                             <div class="col-auto mb-3">
                                 <h2 class="sale-percent">10% off</h2>

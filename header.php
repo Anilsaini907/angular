@@ -1,3 +1,4 @@
+
 <?php
 include_once('admin/config.php'); 
 $catsql="SELECT * FROM tb_category where is_active  =1";
@@ -14,15 +15,9 @@ $categories=array();
  //var_dump($allcats);
 //ini_set('display_errors', 1);
 ?>
-<?php
-
-?>
-	<head>
+<head>
 	<meta charset="utf-8">
-
 	<title>StellaBlankets</title>
-
-
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -32,28 +27,19 @@ $categories=array();
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
-
-
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-        <meta name="robots" content="noindex, follow" />
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
-
         <!-- CSS
         ============================================ -->
-
         <!-- Vendor CSS (Bootstrap & Icon Font) -->
         <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/vendor/font-awesome-pro.min.css">
         <link rel="stylesheet" href="assets/css/vendor/themify-icons.css">
         <link rel="stylesheet" href="assets/css/vendor/customFonts.css">
-
         <!-- Plugins CSS (All Plugins Files) -->
         <link rel="stylesheet" href="assets/css/plugins/select2.min.css">
         <link rel="stylesheet" href="assets/css/plugins/perfect-scrollbar.css">
@@ -72,7 +58,16 @@ $categories=array();
         <!-- <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
         <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
         <link rel="stylesheet" href="assets/css/style.min.css"> -->
-
+        <style>
+       #hoveredcategory img{
+            width:500px;
+            height:300px;
+        }
+        h1 { text-align: center }
+        .site-main-menu.justify-content-center ul li{
+            margin:-10px;
+        }
+    </style>
     </head>
 	<body>
     <?php
@@ -140,7 +135,7 @@ $categories=array();
                 <nav class="site-main-menu justify-content-center">
                     <ul>
                         <li><a href="index.php"><span class="menu-text">Home</span></a></li>
-                        <li><a href="about-us-2.html"><span class="menu-text">About us</span></a></li>
+                        <li><a href="about-us.php"><span class="menu-text">About us</span></a></li>
 
                         <li class="has-children"><a href="#"><span class="menu-text">Shop</span></a>
                             <ul class="sub-menu mega-menu">
@@ -154,7 +149,8 @@ $categories=array();
                                         if($value['parent_id']==0){
                                             ?>
 
-                                            <li id="liBtn">    <a  href="subCategories.php?id=<?php echo $value['id']; ?>"><span class="menu-text"><?php echo $value['category_name']; ?></span></a></li>
+                                            <li id="liBtn"> <a  href="subCategories.php?id=<?php echo $value['id']; ?>">
+                                            <span value="<?php echo $value['id']; ?>" class="menu-text"><?php echo $value['category_name']; ?></span></a></li>
 
                                         <?php } 
                                        ?> 
@@ -163,108 +159,17 @@ $categories=array();
                                 </li>
 
                                 <li class="align-self-center">
-                                    //TODO CHANGE IMAGE ON HOVER OF CATEGORY
-                                    <a href="#" class="menu-banner"><img src="assets/images/banner/menu-banner-2.png" alt="Shop Menu Banner"></a>
+                                    <h1 id="categoryName"></h1>
+                                    <a href="" id="hoveredcategory" tag="" class="menu-banner">
+                                        <img src="" alt="Shop Menu Banner" ></a>
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="contact-us.html"><span class="menu-text">Testimonials</span></a></li>
-                        <li><a href="contact-us.html"><span class="menu-text">FAQ's</span></a></li>
-                        <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>
+                        <li><a href="testimonial1.php"><span class="menu-text">Testimonials</span></a></li>
+                        <li><a href="faqs1.php"><span class="menu-text">FAQ's</span></a></li>
+                        <li><a href="contact1.php"><span class="menu-text">Contact us</span></a></li>
 
 
-                        <!--                        <li class="has-children"><a href="#"><span class="menu-text">Project</span></a>-->
-<!--                            <ul class="sub-menu">-->
-<!--                                <li><a href="portfolio-3-columns.html"><span class="menu-text">Portfolio 3 Columns</span></a></li>-->
-<!--                                <li><a href="portfolio-4-columns.html"><span class="menu-text">Portfolio 4 Columns</span></a></li>-->
-<!--                                <li><a href="portfolio-5-columns.html"><span class="menu-text">Portfolio 5 Columns</span></a></li>-->
-<!--                                <li><a href="portfolio-details.html"><span class="menu-text">Portfolio Details</span></a></li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-<!--                        <li class="has-children"><a href="#"><span class="menu-text">Elements</span></a>-->
-<!--                            <ul class="sub-menu mega-menu">-->
-<!--                                <li>-->
-<!--                                    <a href="#" class="mega-menu-title"><span class="menu-text">Column One</span></a>-->
-<!--                                    <ul>-->
-<!--                                        <li><a href="elements-products.html"><span class="menu-text">Product Styles</span></a></li>-->
-<!--                                        <li><a href="elements-products-tabs.html"><span class="menu-text">Product Tabs</span></a></li>-->
-<!--                                        <li><a href="elements-product-sale-banner.html"><span class="menu-text">Product & Sale Banner</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li>-->
-<!--                                    <a href="#" class="mega-menu-title"><span class="menu-text">Column Two</span></a>-->
-<!--                                    <ul>-->
-<!--                                        <li><a href="elements-category-banner.html"><span class="menu-text">Category Banner</span></a></li>-->
-<!--                                        <li><a href="elements-team.html"><span class="menu-text">Team Member</span></a></li>-->
-<!--                                        <li><a href="elements-testimonials.html"><span class="menu-text">Testimonials</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li>-->
-<!--                                    <a href="#" class="mega-menu-title"><span class="menu-text">Column Three</span></a>-->
-<!--                                    <ul>-->
-<!--                                        <li><a href="elements-instagram.html"><span class="menu-text">Instagram</span></a></li>-->
-<!--                                        <li><a href="elements-map.html"><span class="menu-text">Google Map</span></a></li>-->
-<!--                                        <li><a href="elements-icon-box.html"><span class="menu-text">Icon Box</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li>-->
-<!--                                    <a href="#" class="mega-menu-title"><span class="menu-text">Column Four</span></a>-->
-<!--                                    <ul>-->
-<!--                                        <li><a href="elements-buttons.html"><span class="menu-text">Buttons</span></a></li>-->
-<!--                                        <li><a href="elements-faq.html"><span class="menu-text">FAQs / Toggles</span></a></li>-->
-<!--                                        <li><a href="elements-brands.html"><span class="menu-text">Brands</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-<!--                        <li class="has-children"><a href="#"><span class="menu-text">Blog</span></a>-->
-<!--                            <ul class="sub-menu">-->
-<!--                                <li class="has-children"><a href="blog-right-sidebar.html"><span class="menu-text">Standard Layout</span></a>-->
-<!--                                    <ul class="sub-menu">-->
-<!--                                        <li><a href="blog-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-fullwidth.html"><span class="menu-text">Full Width</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li class="has-children"><a href="blog-grid-right-sidebar.html"><span class="menu-text">Grid Layout</span></a>-->
-<!--                                    <ul class="sub-menu">-->
-<!--                                        <li><a href="blog-grid-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-grid-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-grid-fullwidth.html"><span class="menu-text">Full Width</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li class="has-children"><a href="blog-list-right-sidebar.html"><span class="menu-text">List Layout</span></a>-->
-<!--                                    <ul class="sub-menu">-->
-<!--                                        <li><a href="blog-list-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-list-fullwidth.html"><span class="menu-text">Full Width</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li class="has-children"><a href="blog-masonry-right-sidebar.html"><span class="menu-text">Masonry Layout</span></a>-->
-<!--                                    <ul class="sub-menu">-->
-<!--                                        <li><a href="blog-masonry-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-masonry-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-masonry-fullwidth.html"><span class="menu-text">Full Width</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li class="has-children"><a href="blog-details-right-sidebar.html"><span class="menu-text">Single Post Layout</span></a>-->
-<!--                                    <ul class="sub-menu">-->
-<!--                                        <li><a href="blog-details-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-details-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>-->
-<!--                                        <li><a href="blog-details-fullwidth.html"><span class="menu-text">Full Width</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-<!--                        <li class="has-children"><a href="#"><span class="menu-text">Pages</span></a>-->
-<!--                            <ul class="sub-menu">-->
-<!--                                <li><a href="about-us.html"><span class="menu-text">About us</span></a></li>-->
-<!--                                <li><a href="about-us-2.html"><span class="menu-text">About us 02</span></a></li>-->
-<!--                                <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>-->
-<!--                                <li><a href="coming-soon.html"><span class="menu-text">Coming Soon</span></a></li>-->
-<!--                                <li><a href="404.html"><span class="menu-text">Page 404</span></a></li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
                     </ul>
                 </nav>
             </div>
@@ -295,26 +200,32 @@ $categories=array();
                             <li><a href="about.php"><span class="menu-text">ABOUT US</span></a></li>
                             <li class="has-children"><a href="#"><span class="menu-text">Shop</span></a>
 
-                                <ul class="sub-menu mega-menu">
+                            <ul class="sub-menu mega-menu">
 
-                                    <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">SHOP PAGES</span></a>
-                                        <ul>
-                                            <?php
-                                           
-                                            while($rows=mysqli_fetch_array($categories)){
-                                                ?>
+<li>
+    <a href="#" class="mega-menu-title"><span class="menu-text">CATEGORIES</span></a>
+    <ul>
+        <?php
+        foreach ($allcats as $value) {
+           
+        if($value['parent_id']==0){
+            ?>
 
-                                                <li>    <a href="category.php?id=<?php echo $allcats['id']; ?>"><span class="menu-text"><?php echo $allcats['category_name']; ?></span></a></li>
+            <li id="liBtn"> <a  href="subCategories.php?id=<?php echo $value['id']; ?>">
+            <span value="<?php echo $value['id']; ?>" class="menu-text"><?php echo $value['category_name']; ?></span></a></li>
 
-                                            <?php } ?>
+        <?php } 
+       ?> 
+        <?php } ?>
+    </ul>
+</li>
 
-                                        </ul>
-                                    </li>
-                                    <li class="align-self-center">
-                                        <a href="#" class="menu-banner"><img src="assets/images/banner/menu-banner-2.png" alt="Shop Menu Banner"></a>
-                                    </li>
-                                </ul>
+<li class="align-self-center">
+    <h1 id="categoryName"></h1>
+    <a href="" id="hoveredcategory" tag="" class="menu-banner">
+        <img src="" alt="Shop Menu Banner" ></a>
+</li>
+</ul>
                             </li>
                             <li><a href="contact-us.html"><span class="menu-text">TESTIMONIALS</span></a></li>
 
@@ -358,6 +269,7 @@ $categories=array();
 
     </div>
     <!-- Header Sticky Section End -->
+    
     <!-- Mobile Header Section Start -->
     <div class="mobile-header bg-white section d-xl-none">
         <div class="container">
@@ -462,7 +374,7 @@ $categories=array();
     <!-- OffCanvas Search End -->
 
     <!-- OffCanvas Wishlist Start -->
-    <div id="offcanvas-wishlist" class="offcanvas offcanvas-wishlist">
+    <!-- <div id="offcanvas-wishlist" class="offcanvas offcanvas-wishlist">
         <div class="inner">
             <div class="head">
                 <span class="title">Wishlist</span>
@@ -502,7 +414,7 @@ $categories=array();
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- OffCanvas Wishlist End -->
 
     <!-- OffCanvas Cart Start -->
@@ -565,35 +477,45 @@ $categories=array();
                 </form>
             </div>
             <div class="offcanvas-menu">
-                <ul>
-                    <li><a href="index.php"><span class="menu-text">Home</span></a></li>
-                    <li><a href="about-us-2.html"><span class="menu-text">About us 02</span></a></li>
-                    <li><a href="index.php"><span class="menu-text">Products</span></a></li>
-                    <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>
-                    <li><a href="#"><span class="menu-text">Pages</span></a>
-                        <ul class="sub-menu">
-                            <li><a href="about-us.html"><span class="menu-text">About us</span></a></li>
-                            <li><a href="about-us-2.html"><span class="menu-text">About us 02</span></a></li>
-                            <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>
-                            <li><a href="coming-soon.html"><span class="menu-text">Coming Soon</span></a></li>
-                            <li><a href="404.html"><span class="menu-text">Page 404</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <ul>
+                        <li><a href="index.php"><span class="menu-text">Home</span></a></li>
+                        <li><a href="about-us.php"><span class="menu-text">About us</span></a></li>
+
+                        <li class="has-children"><a href="#"><span class="menu-text">Shop</span></a>
+                            <ul class="sub-menu mega-menu">
+
+                                <li>
+                                    <a href="#" class="mega-menu-title"><span class="menu-text">CATEGORIES</span></a>
+                                    <ul>
+                                        <?php
+                                        foreach ($allcats as $value) {
+                                           
+                                        if($value['parent_id']==0){
+                                            ?>
+
+                                            <li id="liBtn"> <a  href="subCategories.php?id=<?php echo $value['id']; ?>">
+                                            <span value="<?php echo $value['id']; ?>" class="menu-text"><?php echo $value['category_name']; ?></span></a></li>
+
+                                        <?php } 
+                                       ?> 
+                                        <?php } ?>
+                                    </ul>
+                                </li>
+
+                                <!-- <li class="align-self-center">
+                                    <h1 id="categoryName"></h1>
+                                    <a href="" id="hoveredcategory" tag="" class="menu-banner">
+                                        <img src="" alt="Shop Menu Banner" ></a>
+                                </li> -->
+                            </ul>
+                        </li>
+                        <li><a href="testimonial1.php"><span class="menu-text">Testimonials</span></a></li>
+                        <li><a href="faqs1.php"><span class="menu-text">FAQ's</span></a></li>
+                        <li><a href="contact1.php"><span class="menu-text">Contact us</span></a></li>
+
+
+                    </ul>
             </div>
-<!--            <div class="offcanvas-buttons">-->
-<!--                <div class="header-tools">-->
-<!--                    <div class="header-login">-->
-<!--                        <a href="my-account.html"><i class="fal fa-user"></i></a>-->
-<!--                    </div>-->
-<!--                    <div class="header-wishlist">-->
-<!--                        <a href="wishlist.html"><span>3</span><i class="fal fa-heart"></i></a>-->
-<!--                    </div>-->
-<!--                    <div class="header-cart">-->
-<!--                        <a href="shopping-cart.html"><span class="cart-count">3</span><i class="fal fa-shopping-cart"></i></a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
             <div class="offcanvas-social">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -605,8 +527,49 @@ $categories=array();
     <!-- OffCanvas Search End -->
 
     <div class="offcanvas-overlay"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-//document.getElementById("#liBtn").addEventListener("click", getMySubCats);
+defaultImagePath= 'http://img.thrfun.com/img/079/697/fleece_blankets_l1.jpg';
+$( document ).ready(function() {
+    $('#hoveredcategory img').attr('src',defaultImagePath)
+}); 
+var categories = JSON.parse('<?= json_encode($allcats); ?>');
+//console.log(categories);
+$('#liBtn a span').mouseover(function() {
+var parentCatId = this.getAttribute("value")
+//alert("hi"+ parentCatId);   
+getImageOnhover(parentCatId );
+
+});
+function getImageOnhover(id){
+//console.log(id)
+var selectedCategory=getCategoryById(id)
+var imagepath= selectedCategory.image;
+var categoryName=selectedCategory.category_name;
+//console.log(categoryName)
+
+document.getElementById("categoryName").innerHTML = categoryName;
+if(imagepath==null || imagepath==" "){
+    $('#hoveredcategory img').attr('src',defaultImagePath)
+}
+else{
+    $('#hoveredcategory img').attr('src','images/categories/'+imagepath)
+     console.log(imagepath)
+}
+$('#hoveredcategory').attr('href','subCategories.php?id='+ id)
+}
+
+function getCategoryById(id)
+{ 
+     // console.log(categories[0].id); 
+    var selectedCategory={}
+    for(i=0;i<categories.length;i++){  
+        if(id===categories[i].id){
+          selectedCategory= categories[i]
+        }
+        }
+       // console.log(selectedCategory)
+        return selectedCategory
+}
 
 </script>
-

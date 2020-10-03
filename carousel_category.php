@@ -2,7 +2,7 @@
 ?>
 
 <!-- Category Banner Section Start -->
-<div class="section section-fluid section-padding pt-0">
+<div id="carouselcategory" class="section section-fluid section-padding pt-0">
     <div class="container">
         <div class="category-banner1-carousel">
 
@@ -22,10 +22,11 @@
 
                 <div class="category-banner1">
                     <div class="inner">
-                        <a href="shop.html" class="image"><img src="assets/images/banner/category/banner-s1-1.jpg" alt=""></a>
+                        <a href="subCategories.php?id=<?php echo $rows['id']; ?>" class="image">
+                        <img  src="images/categories/<?php echo $rows['image'];?>" width="200" height="300"></a>
                         <div class="content">
                             <h3 class="title">
-                                <a href="shop.html" ><?php echo  $rows['category_name']; ?></a>
+                                <a href="subCategories.php?id=<?php echo  $rows['id']; ?>" ><?php echo  $rows['category_name']; ?></a>
                                 <span class="number"></span>
                             </h3>
                         </div>

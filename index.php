@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html class="no-js" lang="en">
 
 <?php
 include_once('admin/config.php'); 
  $catsql="SELECT * FROM tb_category where is_active  =1";
-$allproducts=array();
+$allcats=array();
 $categories=array();
  if (!empty($mysqliconn)) {
      $categories=mysqli_query($mysqliconn,$catsql);
@@ -15,7 +15,7 @@ $categories=array();
      }
  }
  
- $allcats=json_encode($allproducts);
+ //var_dump(json_encode($allcats));
 //ini_set('display_errors', 1);
 
 include('header.php');

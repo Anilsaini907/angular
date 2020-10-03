@@ -11,7 +11,7 @@ for ($x = 0; $x <sizeOf($categoryIds); $x++) {
    else
    $catsql=$catsql." id = ".$categoryIds[$x]." OR ";
 }
-//$catsql=$catsql." LIMIT 7";
+$catsql=$catsql." LIMIT 7";
 //var_dump($catsql);
 
 //var_dump($mysqliconn);
@@ -25,7 +25,7 @@ while($row=mysqli_fetch_array($catresult)){
 $alldata = json_encode($products);
 }
 //echo "hello guys";
-var_dump($alldata);
+//var_dump($alldata);
 //echo $alldata;
 
 ?>
